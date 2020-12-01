@@ -1,10 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = (): JSX.Element => {
   return (
     <>
-      <span>Chrommerce</span>
-      <div>Checkout</div>
+      <span>
+        <Link to="/">Chrommerce</Link>
+      </span>
+      <div>
+        <Link to="/checkout">
+          <i className="fas fa-shopping-basket" />
+        </Link>
+      </div>
     </>
   );
 };

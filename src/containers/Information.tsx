@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Information = (): JSX.Element => {
   return (
@@ -21,7 +22,9 @@ const Information = (): JSX.Element => {
           </form>
           <div className="Information-buttons">
             <button type="button">Go back</button>
-            <button type="button">Continue</button>
+            <Link to="/checkout/payment">
+              <button type="button">Continue</button>
+            </Link>
           </div>
         </div>
       </div>
