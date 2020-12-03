@@ -7,8 +7,12 @@ interface ProductsObject {
   price: number;
   description: string;
 }
+interface Cart {
+  productItem: ProductsObject;
+  handleAddToCart: (productItem: ProductsObject) => void;
+}
 
-const Product: React.FunctionComponent<{ productItem: ProductsObject }> = ({ productItem }): JSX.Element => {
+const Product: React.FunctionComponent<Cart> = ({ productItem, handleAddToCart }): JSX.Element => {
   return (
     <>
       <img src={productItem.image} alt={productItem.title} />
@@ -17,6 +21,9 @@ const Product: React.FunctionComponent<{ productItem: ProductsObject }> = ({ pro
         <span>{productItem.price}</span>
         <p>{productItem.description}</p>
       </div>
+      <button type="button" onClick={() => handleAddToCart(productItem)}>
+        Add to cart
+      </button>
     </>
   );
 };

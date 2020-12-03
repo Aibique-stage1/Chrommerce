@@ -1,4 +1,16 @@
-const initialState = {
+interface ObjectState {
+  id: string;
+  image: string;
+  title: string;
+  price: number;
+  description: string;
+}
+interface State {
+  cart?: ObjectState[];
+  products: ObjectState[];
+}
+
+const initialState: State = {
   cart: [],
   products: [
     {

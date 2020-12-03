@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../context/AppContext';
 
 import Product from './Product';
 
@@ -9,13 +10,30 @@ interface ProductsObject {
   price: number;
   description: string;
 }
+interface AppState {
+  cart?: ProductsObject[];
+  products?: ProductsObject[];
+}
+interface Cart {
+  state?: AppState;
+  addToCart?: (product: ProductsObject) => ProductsObject[];
+}
 
-const Products: React.FunctionComponent<{ productsList: ProductsObject[] }> = ({ productsList }): JSX.Element => {
+const Products: React.FunctionComponent = () => {
+  const { state = {}, addToCart } = useContext<Cart>(AppContext);
+  const { products } = state;
+
+  const handleAddToCart = (product: ProductsObject) => {
+    if (addToCart) {
+      addToCart(product);
+    }
+  };
   return (
     <>
-      {productsList.map((product: ProductsObject) => {
-        return <Product key={product.id} productItem={product} />;
-      })}
+      {products &&
+        products.map((product: ProductsObject) => {
+          return <Product key={product.id} productItem={product} handleAddToCart={handleAddToCart} />;
+        })}
     </>
   );
 };
