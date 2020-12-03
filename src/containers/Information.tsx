@@ -1,7 +1,60 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import AppContext from '../context/AppContext';
 
-const Information = (): JSX.Element => {
+interface ProductsObject {
+  id: string;
+  image: string;
+  title: string;
+  price: number;
+  description: string;
+}
+interface ObjectBuyer {
+  name: string | null | File;
+  email: string | null | File;
+  address: string | null | File;
+  apt: string | null | File;
+  country: string | null | File;
+  state: string | null | File;
+  pc: string | null | File;
+  city: string | null | File;
+  phone: string | null | File;
+}
+interface AppState {
+  cart?: ProductsObject[];
+  buyer?: ObjectBuyer | null;
+  products?: ProductsObject[];
+}
+interface Cart {
+  state?: AppState;
+  addToBuyer?: (buyer: ObjectBuyer) => void;
+}
+
+const Information: React.FunctionComponent = () => {
+  const { state = {}, addToBuyer } = useContext<Cart>(AppContext);
+  const { cart } = state;
+
+  const form = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = () => {
+    if (form && form.current) {
+      const formData = new FormData(form.current);
+      const buyer: ObjectBuyer = {
+        name: formData.get('nm'),
+        email: formData.get('ml'),
+        address: formData.get('ddrss'),
+        apt: formData.get('prtmnt'),
+        country: formData.get('cntr'),
+        state: formData.get('stt'),
+        pc: formData.get('pstlcd'),
+        city: formData.get('ct'),
+        phone: formData.get('phn'),
+      };
+      if (addToBuyer) {
+        addToBuyer(buyer);
+      }
+    }
+  };
   return (
     <>
       <div className="Information-content">
@@ -9,33 +62,38 @@ const Information = (): JSX.Element => {
           <h3>Contact Form:</h3>
         </div>
         <div className="Information-form">
-          <form action="">
-            <input type="text" placeholder="Full name" name="name" />
-            <input type="text" placeholder="E-mail" name="email" />
-            <input type="text" placeholder="Address" name="address" />
-            <input type="text" placeholder="Apto" name="name" />
-            <input type="text" placeholder="Country" name="name" />
-            <input type="text" placeholder="State" name="name" />
-            <input type="text" placeholder="Postal Code" name="pc" />
-            <input type="text" placeholder="City" name="city" />
-            <input type="text" placeholder="Phone" name="phone" />
+          <form ref={form}>
+            <input type="text" placeholder="Full name" name="nm" />
+            <input type="text" placeholder="E-mail" name="ml" />
+            <input type="text" placeholder="Address" name="ddrss" />
+            <input type="text" placeholder="Apto" name="prtmnt" />
+            <input type="text" placeholder="Country" name="cntr" />
+            <input type="text" placeholder="State" name="stt" />
+            <input type="text" placeholder="Postal Code" name="pstlcd" />
+            <input type="text" placeholder="City" name="ct" />
+            <input type="text" placeholder="Phone" name="phn" />
           </form>
           <div className="Information-buttons">
-            <button type="button">Go back</button>
-            <Link to="/checkout/payment">
-              <button type="button">Continue</button>
-            </Link>
+            <div>
+              <Link to="/checkout">go back</Link>
+            </div>
+            <button type="button" onClick={handleSubmit}>
+              Continue
+            </button>
           </div>
         </div>
       </div>
       <div className="Information-sidebar">
         <h3>List of items:</h3>
-        <div className="Information-item">
-          <div className="Information-element">
-            <h4>Item name</h4>
-            <span>10$</span>
-          </div>
-        </div>
+        {cart &&
+          cart.map((_item) => {
+            <div className="Information-item">
+              <div className="Information-element">
+                <h4>{_item.title}</h4>
+                <span>{_item.price}</span>
+              </div>
+            </div>;
+          })}
       </div>
     </>
   );

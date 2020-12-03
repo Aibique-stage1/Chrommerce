@@ -5,13 +5,36 @@ interface ObjectState {
   price: number;
   description: string;
 }
+interface ObjectBuyer {
+  name: string | null;
+  email: string | null;
+  address: string | null;
+  apt: string | null;
+  country: string | null;
+  state: string | null;
+  pc: string | null;
+  city: string | null;
+  phone: string | null;
+}
 interface State {
   cart?: ObjectState[];
+  buyer?: ObjectBuyer;
   products: ObjectState[];
 }
 
 const initialState: State = {
   cart: [],
+  buyer: {
+    name: null,
+    email: null,
+    address: null,
+    apt: null,
+    country: null,
+    state: null,
+    pc: null,
+    city: null,
+    phone: null,
+  },
   products: [
     {
       id: '1',
