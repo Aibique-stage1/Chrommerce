@@ -16,7 +16,7 @@ interface AppState {
 }
 interface Cart {
   state?: AppState;
-  addToCart?: (product: ProductsObject) => ProductsObject[];
+  addToCart?: (product: ProductsObject) => void;
 }
 
 const Products: React.FunctionComponent = () => {

@@ -1,23 +1,20 @@
-import path from "path";
-import webpack from "webpack";
+import path from 'path';
+import webpack from 'webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 
 const config: webpack.Configuration = {
-  entry: "./src/index.tsx",
+  entry: './src/index.tsx',
   module: {
     rules: [
       {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: [
-              "@babel/preset-env",
-              "@babel/preset-react",
-              "@babel/preset-typescript",
-            ],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
           },
         },
       },
@@ -25,22 +22,22 @@ const config: webpack.Configuration = {
         test: /\.html$/,
         use: [
           {
-            loader: 'html-loader'
+            loader: 'html-loader',
           },
-        ]
-      }
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "bundle.js",
-    publicPath: '/'
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js',
+    publicPath: '/',
   },
   devServer: {
-    contentBase: path.join(__dirname, "build"),
+    contentBase: path.join(__dirname, 'build'),
     compress: true,
     historyApiFallback: true,
     port: 4000,
@@ -49,13 +46,14 @@ const config: webpack.Configuration = {
     new ForkTsCheckerWebpackPlugin({
       async: false,
       eslint: {
-        files: "./src/**/*",
+        files: './src/**/*',
       },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      filename: './index.html'
-    })
+      filename: './index.html',
+    }),
+    new Dotenv(),
   ],
 };
 

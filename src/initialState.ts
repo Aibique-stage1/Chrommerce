@@ -1,28 +1,6 @@
-interface ObjectState {
-  id: string;
-  image: string;
-  title: string;
-  price: number;
-  description: string;
-}
-interface ObjectBuyer {
-  name: string | null;
-  email: string | null;
-  address: string | null;
-  apt: string | null;
-  country: string | null;
-  state: string | null;
-  pc: string | null;
-  city: string | null;
-  phone: string | null;
-}
-interface State {
-  cart?: ObjectState[];
-  buyer?: ObjectBuyer;
-  products: ObjectState[];
-}
+import { AppState } from './types/app';
 
-const initialState: State = {
+const initialState: AppState = {
   cart: [],
   buyer: {
     name: null,
@@ -35,6 +13,7 @@ const initialState: State = {
     city: null,
     phone: null,
   },
+  orders: [],
   products: [
     {
       id: '1',

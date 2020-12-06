@@ -12,25 +12,6 @@ import NotFound from '../containers/NotFound';
 import AppContext from '../context/AppContext';
 import useInitialState from '../hooks/useInitialState';
 
-// interface StateObject {
-//   id: string;
-//   image: string;
-//   title: string;
-//   price: number;
-//   description: string;
-// }
-
-// interface State {
-//   cart?: StateObject[];
-//   products: StateObject[];
-// }
-
-// interface InitState {
-//   addToCart: (payload: StateObject) => void;
-//   removeFromCart: (payload: StateObject) => void;
-//   state: State;
-// }
-
 const App = (): JSX.Element => {
   const initialState = useInitialState();
   return (

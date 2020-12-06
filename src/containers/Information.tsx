@@ -1,40 +1,14 @@
 import React, { useContext, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-
-interface ProductsObject {
-  id: string;
-  image: string;
-  title: string;
-  price: number;
-  description: string;
-}
-interface ObjectBuyer {
-  name: string | null | File;
-  email: string | null | File;
-  address: string | null | File;
-  apt: string | null | File;
-  country: string | null | File;
-  state: string | null | File;
-  pc: string | null | File;
-  city: string | null | File;
-  phone: string | null | File;
-}
-interface AppState {
-  cart?: ProductsObject[];
-  buyer?: ObjectBuyer | null;
-  products?: ProductsObject[];
-}
-interface Cart {
-  state?: AppState;
-  addToBuyer?: (buyer: ObjectBuyer) => void;
-}
+import { UseInitializeReturn, ObjectBuyer, ObjectItem } from '../types/app';
 
 const Information: React.FunctionComponent = () => {
-  const { state = {}, addToBuyer } = useContext<Cart>(AppContext);
-  const { cart } = state;
+  const { state, addToBuyer } = useContext<UseInitializeReturn>(AppContext);
+  const cart = state?.cart;
 
   const form = useRef<HTMLFormElement>(null);
+  const history = useHistory();
 
   const handleSubmit = () => {
     if (form && form.current) {
@@ -52,6 +26,7 @@ const Information: React.FunctionComponent = () => {
       };
       if (addToBuyer) {
         addToBuyer(buyer);
+        history.push('/checkout/payment');
       }
     }
   };
@@ -86,7 +61,7 @@ const Information: React.FunctionComponent = () => {
       <div className="Information-sidebar">
         <h3>List of items:</h3>
         {cart &&
-          cart.map((_item) => {
+          cart.map((_item: ObjectItem) => {
             <div className="Information-item">
               <div className="Information-element">
                 <h4>{_item.title}</h4>
