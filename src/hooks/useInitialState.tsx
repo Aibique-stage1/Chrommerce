@@ -20,7 +20,7 @@ const useInitialState = (): UseInitializeReturn => {
   const addToBuyer = (payload: ObjectBuyer) => {
     setState({
       ...state,
-      ...(state.buyer = payload),
+      buyer: payload,
     });
   };
   const addNewOrder = (payload: ObjectOrder) => {

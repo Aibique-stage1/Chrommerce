@@ -38,3 +38,8 @@ export interface UseInitializeReturn {
   addToBuyer?: (payload: ObjectBuyer) => void;
   addNewOrder?: (payload: ObjectOrder) => void;
 }
+
+export interface Location {
+  lat?: number | undefined;
+  lng?: number | undefined;
+}
