@@ -1,4 +1,4 @@
-import React, { ReactText, useContext } from 'react';
+import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import { OnCaptureData, PayPalButton, ButtonStylingOptions, PaypalOptions } from 'react-paypal-button';
 import { useHistory } from 'react-router-dom';
@@ -18,7 +18,7 @@ const Payment: React.FunctionComponent = () => {
       const reducer = (accumulator: number, currentValue: { price: number }): number =>
         accumulator + currentValue.price;
       const sum = cart.reduce(reducer, 0);
-      return sum || '';
+      return sum;
     }
   };
 

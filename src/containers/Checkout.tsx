@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import { ObjectItem, UseInitializeReturn } from '../types/app';
@@ -25,6 +26,9 @@ const Checkout: React.FunctionComponent = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Checkout | Chrommerce</title>
+      </Helmet>
       <div className="Checkout-content">
         {cart && cart.length > 0 ? <h3>List items</h3> : <h3>No items selected</h3>}
         {cart &&
