@@ -18,7 +18,7 @@ const Payment: React.FunctionComponent = () => {
       const reducer = (accumulator: number, currentValue: { price: number }): number =>
         accumulator + currentValue.price;
       const sum = cart.reduce(reducer, 0);
-      return sum;
+      return sum || '';
     }
   };
 
