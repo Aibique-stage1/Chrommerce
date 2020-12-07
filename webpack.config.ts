@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
+import CopyPlugin from 'copy-webpack-plugin';
 
 const config: webpack.Configuration = {
   entry: './src/index.tsx',
@@ -32,12 +33,12 @@ const config: webpack.Configuration = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/',
   },
   devServer: {
-    contentBase: path.join(__dirname, 'build'),
+    contentBase: path.join(__dirname, 'dist'),
     compress: true,
     historyApiFallback: true,
     port: 4000,
@@ -55,6 +56,13 @@ const config: webpack.Configuration = {
     }),
     new Dotenv({
       path: path.resolve(__dirname, './.env'),
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'public/manifest.json', to: '' },
+        { from: 'public/service-worker.ts', to: '' },
+        { from: 'public/logochr.png', to: 'assets' },
+      ],
     }),
   ],
 };

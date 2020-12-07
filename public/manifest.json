@@ -1,0 +1,15 @@
+{
+    "short_name": "Chrommerce Shop",
+    "name": "eCommerce Online Shop",
+    "icons": [
+      {
+        "src": "assets/logochr.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#222",
+    "theme_color": "#222",
+    "display": "standalone"
+  }
