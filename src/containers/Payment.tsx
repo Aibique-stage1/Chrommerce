@@ -13,7 +13,7 @@ const Payment: React.FunctionComponent = () => {
 
   const history = useHistory();
 
-  const handleSumTotal = (): ReactText | undefined => {
+  const handleSumTotal: () => string | number | undefined = () => {
     if (cart) {
       const reducer = (accumulator: number, currentValue: { price: number }): number =>
         accumulator + currentValue.price;
