@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, ReactText } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
@@ -15,15 +15,19 @@ const Checkout: React.FunctionComponent = () => {
     }
   };
 
-  const handleSumTotal = () => {
-    if (cart) {
-      const reducer = (accumulator: number, currentValue: { price: number }): number =>
-        accumulator + currentValue.price;
-      const sum = cart.reduce(reducer, 0);
-      return sum;
-    }
+  const handleSumTotal: () => ReactText | undefined = () => {
+    const reducer: (lastPrice: number, item: ObjectItem) => number = (lastPrice, item) => {
+      const price = item?.price;
+      if (price) {
+        return lastPrice + price;
+      } else {
+        return 0;
+      }
+    };
+    const sum = cart?.reduce(reducer, 0);
+    // reduce<number>(callback(previousValue, CurrentObject, index, array), initValue:number)=>:number
+    return sum;
   };
-
   return (
     <>
       <Helmet>
@@ -46,7 +50,7 @@ const Checkout: React.FunctionComponent = () => {
       </div>
       {cart && cart.length > 0 && (
         <div className="Checkout-sidebar">
-          <h3>`Total Price: $ ${handleSumTotal()}`</h3>
+          <h3>`Total Price: $ ${cart && handleSumTotal()}`</h3>
           <Link to="/checkout/information">
             <button type="button">Continue</button>
           </Link>

@@ -7,11 +7,11 @@ export interface ObjectOrder {
 }
 
 export interface ObjectItem {
-  id: string;
-  image: string;
-  title: string;
-  price: number;
-  description: string;
+  id?: string;
+  image?: string;
+  title?: string;
+  price?: number;
+  description?: string;
 }
 export interface ObjectBuyer {
   name: string | File | null;

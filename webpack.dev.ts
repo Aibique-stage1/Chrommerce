@@ -58,7 +58,7 @@ const config: webpack.Configuration = {
     new CopyPlugin({
       patterns: [
         { from: 'public/manifest.json', to: '' },
-        { from: 'public/service-worker.ts', to: '' },
+        { from: 'public/service-worker.js', to: '' },
         { from: 'public/logochr.png', to: 'assets' },
       ],
     }),

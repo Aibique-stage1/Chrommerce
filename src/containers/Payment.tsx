@@ -14,12 +14,17 @@ const Payment: React.FunctionComponent = () => {
   const history = useHistory();
 
   const handleSumTotal: () => ReactText | undefined = () => {
-    if (cart) {
-      const reducer = (accumulator: number, currentValue: ObjectItem): number => accumulator + currentValue?.price;
-      const sum = cart.reduce<number>(reducer, 0);
-      // reduce<number>(callback(previousValue, CurrentObject, index, array), initValue:number)=>:number
-      return sum;
-    }
+    const reducer: (lastPrice: number, item: ObjectItem) => number = (lastPrice, item) => {
+      const price = item?.price;
+      if (price) {
+        return lastPrice + price;
+      } else {
+        return 0;
+      }
+    };
+    const sum = cart?.reduce(reducer, 0);
+    // reduce<number>(callback(previousValue, CurrentObject, index, array), initValue:number)=>:number
+    return sum;
   };
 
   const paypalOptions: PaypalOptions = {
@@ -63,7 +68,7 @@ const Payment: React.FunctionComponent = () => {
           <PayPalButton
             paypalOptions={paypalOptions}
             buttonStyles={buttonStyles}
-            amount={handleSumTotal()}
+            amount={cart && handleSumTotal()}
             onPaymentStart={() => console.log('Start payment')}
             onPaymentSuccess={(data) => handleSuccessPayment(data)}
             onPaymentError={(error) => console.log(error)}
