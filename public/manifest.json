@@ -1,9 +1,9 @@
 {
-    "short_name": "Chrommerce Shop",
+    "short_name": "Chrommerce",
     "name": "eCommerce Online Shop",
     "icons": [
       {
-        "src": "assets/logochr.png",
+        "src": "/assets/logochr.png",
         "sizes": "512x512",
         "type": "image/png"
       }
