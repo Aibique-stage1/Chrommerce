@@ -13,12 +13,12 @@ const Payment: React.FunctionComponent = () => {
 
   const history = useHistory();
 
-  const handleSumTotal: () => ReactText = () => {
+  const handleSumTotal: () => ReactText | undefined = () => {
     if (cart) {
-      const reducer = (accumulator: number, currentValue: { price: number }): number =>
-        accumulator + currentValue.price;
+      const reducer = (accumulator: number, currentValue: ObjectItem): number => accumulator + currentValue?.price;
       const sum = cart.reduce<number>(reducer, 0);
-      return sum || '';
+      // reduce<number>(callback(previousValue, CurrentObject, index, array), initValue:number)=>:number
+      return sum;
     }
   };
 
