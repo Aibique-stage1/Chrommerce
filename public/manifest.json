@@ -3,7 +3,7 @@
     "name": "eCommerce Online Shop",
     "icons": [
       {
-        "src": "/assets/logochr.png",
+        "src": "/assets/icon.png",
         "sizes": "512x512",
         "type": "image/png"
       }

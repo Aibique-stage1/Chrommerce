@@ -66,7 +66,7 @@ const config: webpack.Configuration = {
       patterns: [
         { from: 'public/manifest.json', to: '' },
         { from: 'public/service-worker.js', to: '' },
-        { from: 'public/logochr.png', to: 'assets' },
+        { from: 'public/icon.png', to: 'assets' },
       ],
     }),
   ],
