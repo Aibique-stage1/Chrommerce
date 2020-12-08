@@ -73,7 +73,7 @@ const Payment: React.FunctionComponent = () => {
             onPaymentSuccess={(data) => handleSuccessPayment(data)}
             onPaymentError={(error) => console.log(error)}
             onPaymentCancel={(data) => console.log(data)}
-          ></PayPalButton>
+          />
         )}
       </div>
     </>
