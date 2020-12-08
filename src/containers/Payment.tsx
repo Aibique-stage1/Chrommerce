@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, ReactText } from 'react';
 import AppContext from '../context/AppContext';
 import { OnCaptureData, PayPalButton, ButtonStylingOptions, PaypalOptions } from 'react-paypal-button';
 import { useHistory } from 'react-router-dom';
@@ -13,11 +13,11 @@ const Payment: React.FunctionComponent = () => {
 
   const history = useHistory();
 
-  const handleSumTotal: () => string | number | undefined = () => {
+  const handleSumTotal: () => ReactText = () => {
     if (cart) {
       const reducer = (accumulator: number, currentValue: { price: number }): number =>
         accumulator + currentValue.price;
-      const sum: number | string | undefined = cart.reduce(reducer, 0) || '';
+      const sum: ReactText = cart.reduce(reducer, 0) || '';
       return sum;
     }
   };
