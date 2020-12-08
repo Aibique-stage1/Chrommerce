@@ -68,7 +68,7 @@ const Payment: React.FunctionComponent = () => {
           <PayPalButton
             paypalOptions={paypalOptions}
             buttonStyles={buttonStyles}
-            amount={cart && handleSumTotal()}
+            amount={cart ? handleSumTotal() : 0}
             onPaymentStart={() => console.log('Start payment')}
             onPaymentSuccess={(data) => handleSuccessPayment(data)}
             onPaymentError={(error) => console.log(error)}
