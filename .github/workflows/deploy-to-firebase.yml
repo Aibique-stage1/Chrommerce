@@ -20,6 +20,9 @@ jobs:
         with:
           name: dist
           path: dist
+        env:
+          CHROMMERCE_CLIENT_ID: ${{secrets.CHROMMERCE_CLIENT_ID}}
+          CHROMMERCE_MAPS_TOKEN: ${{secrets.CHROMMERCE_MAPS_TOKEN}}
   deploy:
     name: Deploy
     needs: build

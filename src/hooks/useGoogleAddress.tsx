@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Location } from '../types/app';
 
-const GM_TOKEN: string = process.env.GOOGLE_MAPS_TOKEN || '';
+const GM_TOKEN: string = process.env.CHROMMERCE_MAPS_TOKEN || '';
 
 const useGoogleAddress: (address: string | File | null | undefined) => Location = (address) => {
   const [map, setMap] = useState({});

@@ -4,7 +4,7 @@ import { OnCaptureData, PayPalButton, ButtonStylingOptions, PaypalOptions } from
 import { useHistory } from 'react-router-dom';
 import { UseInitializeReturn, ObjectOrder, ObjectItem } from '../types/app';
 
-const CLIENT_ID: string | undefined = process.env.SB_CLIENT_ID_PP;
+const CLIENT_ID: string | undefined = process.env.CHROMMERCE_CLIENT_ID;
 
 const Payment: React.FunctionComponent = () => {
   const { state, addNewOrder } = useContext<UseInitializeReturn>(AppContext);
