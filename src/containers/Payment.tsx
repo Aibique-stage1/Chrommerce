@@ -24,7 +24,7 @@ const Payment: React.FunctionComponent = () => {
     };
     const sum = cart?.reduce(reducer, 0);
     // reduce<number>(callback(previousValue, CurrentObject, index, array), initValue:number)=>:number
-    return sum;
+    return sum || 0;
   };
 
   const paypalOptions: PaypalOptions = {
@@ -68,7 +68,7 @@ const Payment: React.FunctionComponent = () => {
           <PayPalButton
             paypalOptions={paypalOptions}
             buttonStyles={buttonStyles}
-            amount={cart.length > 0 ? handleSumTotal() : 0}
+            amount={handleSumTotal()}
             onPaymentStart={() => console.log('Start payment')}
             onPaymentSuccess={(data) => handleSuccessPayment(data)}
             onPaymentError={(error) => console.log(error)}
