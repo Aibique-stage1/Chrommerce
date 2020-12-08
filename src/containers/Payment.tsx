@@ -17,8 +17,8 @@ const Payment: React.FunctionComponent = () => {
     if (cart) {
       const reducer = (accumulator: number, currentValue: { price: number }): number =>
         accumulator + currentValue.price;
-      const sum: ReactText = cart.reduce(reducer, 0) || '';
-      return sum;
+      const sum = cart.reduce<number>(reducer, 0);
+      return sum || '';
     }
   };
 
