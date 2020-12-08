@@ -3,7 +3,6 @@ import webpack from 'webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
-import CopyPlugin from 'copy-webpack-plugin';
 
 const config: webpack.Configuration = {
   entry: './src/index.tsx',
@@ -55,13 +54,6 @@ const config: webpack.Configuration = {
       filename: './index.html',
     }),
     new Dotenv(),
-    new CopyPlugin({
-      patterns: [
-        { from: 'public/manifest.json', to: '' },
-        { from: 'public/service-worker.js', to: '' },
-        { from: 'public/icon.png', to: 'assets' },
-      ],
-    }),
   ],
 };
 

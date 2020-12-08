@@ -2,7 +2,6 @@ import path from 'path';
 import webpack from 'webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
 
 const config: webpack.Configuration = {
   entry: './src/index.tsx',
@@ -61,13 +60,6 @@ const config: webpack.Configuration = {
         CHROMMERCE_CLIENT_ID: JSON.stringify(process.env.CHROMMERCE_CLIENT_ID),
         CHROMMERCE_MAPS_TOKEN: JSON.stringify(process.env.CHROMMERCE_MAPS_TOKEN),
       },
-    }),
-    new CopyPlugin({
-      patterns: [
-        { from: 'public/manifest.json', to: '' },
-        { from: 'public/service-worker.js', to: '' },
-        { from: 'public/icon.png', to: 'assets' },
-      ],
     }),
   ],
 };
