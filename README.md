@@ -1,52 +1,81 @@
-Comfeco Comunity fest and Code crossed_flags
+# Cristofher Jumbo jimenez (Aybike) 👽
 
-Landing page para la Hackathon del proximo año 2022. El cliente podra inscribirse, iniciar session y demas. Ademas de haber una cuenta regresiva que apunta a la fecha de inicio del Evento. Mas informacion en Comfeco.com
-Status
+Welcome to my portfolio's README file. I am a MERN stack developer who started a repository collection with this my own website. I am adding features in My free time. Also I test new languages and techniques here. So you are very welcome to take a look at the code.
 
-En produccion => Comfeco-Team-React-48
+## Status
+---
 
-En desarrollo, Landing Page.
-Getting Started horse_racing
+Depoyed [Status here] Here is the link: https://chr-jimenez.com/
 
-    Survivor Kit
+## Getting Started 🛸
 
-Technology 	Documentation
-Node 	https://www.npmjs.com/get-npm
-Prettier 	https://prettier.io/docs/en/install.html
-Eslint 	https://eslint.org/docs/user-guide/getting-started
+---
 
-    Installation
+> Survivor Kit
 
-$ npm install
+| Technology | Documentation                                      |
+| ---------- | -------------------------------------------------- |
+| Node       | https://www.npmjs.com/get-npm                      |
+| Yarn       | https://legacy.yarnpkg.com/lang/en/docs/install/   |
+| Prettier   | https://prettier.io/docs/en/install.html           |
+| Eslint     | https://eslint.org/docs/user-guide/getting-started |
 
-    Local
+---
 
-$ npm run dev
+> Installation
 
-    Deploy
+```sh
+$ yarn install
+```
 
-$ npm run start
-$ npm run build
+---
 
-    Testing
+> Local
 
-$ npm run test
+```sh
+$ yarn dev
+```
 
-Issues hammer_and_pick
+---
 
-    Errors
+> Deploy
 
-    Bugs
+```
+$ yarn start
+$ yarn build
+```
 
-    FAQ
+---
 
-Versioning
+> Testing
+
+```sh
+$ yarn test
+```
+
+## Issues 🐙
+
+---
+
+> Errors
+
+> Bugs
+
+> FAQ
+
+## Versioning
+
+---
 
 Node v14.15.1
 
-Npm v6.14.10
+Yarn v1.22.10.
 
-Comfeco v0.1.35
-Authors mechanic
+Cristofher v0.1.35 -> v0.2.3 soon...
 
-| Jose Rivera | Antonio Jimenez | Nelson Mandela | Diango Gavidia |
+## Authors 👾
+
+---
+
+[Antonio Jimenez](https://github.com/Tonnraus) |
+
